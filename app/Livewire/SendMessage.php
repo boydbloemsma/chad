@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Events\MessageSend;
 use App\Models\Message;
 use App\Models\Room;
 use Illuminate\Support\Facades\Auth;
@@ -16,14 +17,16 @@ class SendMessage extends Component
 
     public function send()
     {
-        Message::create([
+        $message = Message::create([
             'user_id' => Auth::user()->id,
             'recipient_id' => $this->recipient_id,
             'room_id' => $this->room->id,
             ...$this->only(['message']),
         ]);
 
-        $this->dispatch('message-send');
+        MessageSend::dispatch($message);
+
+        $this->message = '';
     }
 
     public function render()
