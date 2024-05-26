@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <article>
         <form method="POST" action="/login">
             @csrf
@@ -49,4 +49,4 @@
             </fieldset>
         </form>
     </article>
-</x-app-layout>
+</x-guest-layout>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::prefix('/login')->group(function () {
     Route::get('/', \App\Http\Controllers\Authentication\Login\IndexController::class)

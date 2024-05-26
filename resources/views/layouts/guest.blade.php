@@ -19,8 +19,8 @@
                     <li><strong>Acme Corp</strong></li>
                 </ul>
                 <ul>
-                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('logout.index') }}">Logout</a></li>
+                    <li><a href="{{ route('welcome') }}">Home</a></li>
+                    <li><a href="{{ route('login.index') }}">Login</a></li>
                 </ul>
             </nav>
         </header>
