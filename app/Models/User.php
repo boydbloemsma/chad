@@ -61,4 +61,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Room::class, 'room_user')->withTimestamps();
     }
+
+    public function chats()
+    {
+        return Message::with('recipient')
+            ->where('user_id', $this->id)
+            ->whereNull('room_id')
+            ->groupBy('recipient_id')
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
 }

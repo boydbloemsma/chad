@@ -20,7 +20,7 @@ class SendMessage extends Component
         $message = Message::create([
             'user_id' => Auth::user()->id,
             'recipient_id' => $this->recipient_id,
-            'room_id' => $this->room->id,
+            'room_id' => $this->room?->id,
             ...$this->only(['message']),
         ]);
 

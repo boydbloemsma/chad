@@ -16,6 +16,8 @@ class MessageSend implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public string $queue = 'messages';
+
     public function __construct(
         public Message $message
     ) {}

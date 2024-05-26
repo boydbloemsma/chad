@@ -21,6 +21,6 @@ class StoreController extends Controller
 
         Auth::user()->rooms()->attach($room->id);
 
-        return redirect('dashboard');
+        return redirect(route('rooms.show', $room));
     }
 }

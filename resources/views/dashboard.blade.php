@@ -3,35 +3,64 @@
         Dashboard
     </x-slot:header>
 
-    <section id="dashboard" class="grid">
-        <aside>
-            <nav>
-                <p><b>Rooms</b></p>
-                <ul>
-                    @forelse(auth()->user()->rooms as $room)
+    <section class="grid">
+        <article>
+            <aside>
+                <nav>
+                    <p><b>Private messages</b></p>
+                    <ul>
+                        @forelse(auth()->user()->chats() as $chat)
+                            <li>
+                                {{ $chat->recipient->name }}
+                            </li>
+                        @empty
+                            <li>
+                                You do not have any private messages yet.
+                            </li>
+                        @endforelse
                         <li>
-                            <a href="{{ route('rooms.show', $room->slug) }}">
-                                {{ $room->name }}
+                            <a href="{{ route('rooms.index') }}" class="secondary">
+                                Message someone
                             </a>
                         </li>
-                    @empty
-                        <li>
-                            You are not in any rooms yet, create one below or join one.
-                        </li>
-                    @endforelse
-                    <hr />
-                    <li>
-                        <a href="{{ route('rooms.index') }}" class="secondary">
-                            Add room
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+                    </ul>
+                </nav>
+            </aside>
+        </article>
 
-        <div>
-            <h1>Hello world!</h1>
-            <p>Lorem ipsum</p>
-        </div>
+        <article>
+            <aside>
+                <nav>
+                    <p><b>Rooms</b></p>
+                    <ul>
+                        @forelse(auth()->user()->rooms as $room)
+                            <li>
+                                <a href="{{ route('rooms.show', $room->slug) }}">
+                                    {{ $room->name }}
+                                </a>
+                            </li>
+                        @empty
+                            @if(auth()->user()->is_admin)
+                                <li>
+                                    You are not in any rooms yet, create one below or join one.
+                                </li>
+                            @else
+                                <li>
+                                    You are not in any rooms yet.
+                                </li>
+                            @endif
+                        @endforelse
+
+                        @if(auth()->user()->is_admin)
+                            <li>
+                                <a href="{{ route('rooms.index') }}" class="secondary">
+                                    Add room
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </nav>
+            </aside>
+        </article>
     </section>
 </x-app-layout>

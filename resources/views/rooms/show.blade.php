@@ -9,6 +9,5 @@
 
     <section>
         <livewire:room-messages :room="$room" />
-        <livewire:send-message :room="$room" />
     </section>
 </x-app-layout>
