@@ -1,6 +1,6 @@
-<article>
+<article id="messages-overview">
     @forelse($room->messages as $message)
-        <article wire:key="{{ $message->id }}">
+        <article class="message @if($message->sentByUser()) owned-message @endif" wire:key="{{ $message->id }}">
             <header>
                 {{ $message->user->name }}
             </header>
@@ -14,8 +14,7 @@
 @script
 <script>
     window.Echo.private(`messages.{{ $room->id }}`)
-        .listen('MessageSend', (e) => {
-            console.log(e.message.message);
+        .listen('MessageSend', () => {
             $wire.$refresh();
         });
 </script>

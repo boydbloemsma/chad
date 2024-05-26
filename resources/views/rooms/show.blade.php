@@ -3,6 +3,12 @@
         {{ $room->name }}
     </x-slot:header>
 
-    <livewire:room-messages :room="$room" />
-    <livewire:send-message :room="$room" />
+    <a href="{{ route('dashboard') }}" class="secondary">
+        ← Return
+    </a>
+
+    <section>
+        <livewire:room-messages :room="$room" />
+        <livewire:send-message :room="$room" />
+    </section>
 </x-app-layout>

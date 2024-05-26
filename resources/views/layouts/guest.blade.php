@@ -6,7 +6,7 @@
 
     @vite(['resources/css/app.scss'])
 
-    <title>Laravel</title>
+    <title>Chad</title>
 
     <!-- Fonts -->
 

@@ -24,6 +24,7 @@ Route::middleware('auth')
         Route::post('/', \App\Http\Controllers\Rooms\StoreController::class)
             ->name('rooms.store');
         Route::get('/{room:slug}', \App\Http\Controllers\Rooms\ShowController::class)
+            ->middleware('belongsToRoom')
             ->name('rooms.show');
     });
 

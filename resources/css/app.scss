@@ -3,6 +3,20 @@
     $enable-responsive-spacings: true,
 );
 
+#messages-overview {
+    margin-top: var(--pico-spacing);
+    height: 80vh;
+    overflow: scroll;
+}
+
+.message {
+    width: 40%;
+}
+
+.owned-message {
+    margin-left: 60%;
+}
+
 #dashboard {
     aside {
         margin-right: var(--pico-block-spacing-horizontal);
