@@ -1,4 +1,8 @@
 <x-guest-layout>
+    <x-slot:header>
+        Login
+    </x-slot:header>
+
     <article>
         <form method="POST" action="/login">
             @csrf
