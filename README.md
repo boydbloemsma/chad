@@ -13,6 +13,8 @@ Has support for private messages as well as rooms.
 php artisan migrate:fresh --seed
 ```
 
+### Run services
+
 ```shell
 npm run dev
 ```
