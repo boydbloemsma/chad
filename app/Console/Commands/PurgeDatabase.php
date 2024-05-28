@@ -23,7 +23,7 @@ class PurgeDatabase extends Command
 
         $name = 'Book club';
 
-        $room = Room::factory()->create([
+        $room = Room::create([
             'name' => $name,
             'slug' => Str::slug($name),
         ]);
