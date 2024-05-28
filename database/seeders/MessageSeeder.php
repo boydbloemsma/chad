@@ -10,6 +10,8 @@ class MessageSeeder extends Seeder
 {
     public function run(): void
     {
+        Message::truncate();
+
         Message::factory()->create([
             'user_id' => 1,
             'room_id' => 1,

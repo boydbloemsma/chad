@@ -10,6 +10,10 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        if (User::first()->exists()) {
+            return;
+        }
+
         User::factory()->create([
             'name' => 'bobl',
             'email' => 'boydbloemsma@gmail.com',
