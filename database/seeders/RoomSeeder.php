@@ -12,8 +12,6 @@ class RoomSeeder extends Seeder
 {
     public function run(): void
     {
-        Room::truncate();
-
         $name = 'Book club';
 
         $room = Room::factory()->create([

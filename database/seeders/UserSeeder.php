@@ -10,12 +10,6 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        if (User::first() !== null) {
-            return;
-        }
-
-        User::truncate();
-
         User::factory()->create([
             'name' => 'bobl',
             'email' => 'boydbloemsma@gmail.com',
