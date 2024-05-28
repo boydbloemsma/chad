@@ -10,9 +10,11 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        if (User::first()->exists()) {
+        if (User::first() !== null) {
             return;
         }
+
+        User::truncate();
 
         User::factory()->create([
             'name' => 'bobl',
