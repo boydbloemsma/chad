@@ -3,14 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
 
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
 
     <title>Chad</title>
-
-    <!-- Fonts -->
-
-    <!-- Styles -->
 </head>
     <body>
         <header class="container">
@@ -27,16 +24,16 @@
                             </summary>
                             <ul dir="rtl">
                                 <li>
-                                    <form action="{{ route('logout.index') }}" method="POST">
-                                        @csrf
-                                        <input type="submit" value="Logout" class="secondary" />
-                                    </form>
-                                </li>
-                                <li>
                                     <form action="{{ route('account.destroy') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="Remove account" />
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="{{ route('logout.index') }}" method="POST">
+                                        @csrf
+                                        <input type="submit" value="Logout" class="secondary" />
                                     </form>
                                 </li>
                             </ul>

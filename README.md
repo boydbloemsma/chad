@@ -5,6 +5,10 @@
 Realtime messaging app using Reverb.
 Has support for private messages as well as rooms.
 
+## Tasks
+
+- [ ] tests
+
 ## Development
 
 ### Migrate and seed databse
