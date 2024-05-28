@@ -16,11 +16,12 @@
         <header class="container">
             <nav>
                 <ul>
-                    <li><strong>Acme Corp</strong></li>
+                    <li><strong>Chad</strong></li>
                 </ul>
                 <ul>
                     <li><a href="{{ route('welcome') }}">Home</a></li>
                     <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
                 </ul>
             </nav>
         </header>

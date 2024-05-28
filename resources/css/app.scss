@@ -3,20 +3,15 @@
     $enable-responsive-spacings: true,
 );
 
-#messages-overview {
-    height: 80vh;
-    overflow: scroll;
+#message-board {
+    margin-top: var(--pico-spacing);
+
+    #messages-overview {
+        height: 60vh;
+        overflow: scroll;
+    }
 }
 
 .message {
     margin-bottom: var(--pico-spacing);
-    width: 40%;
-
-    small {
-        float: right;
-    }
-}
-
-.owned-message {
-    margin-left: 60%;
 }

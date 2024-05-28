@@ -1,12 +1,30 @@
 <x-guest-layout>
     <x-slot:header>
-        Login
+        Register
     </x-slot:header>
 
     <article>
-        <form method="POST" action="{{ route('login.store') }}">
+        <form method="POST" action="{{ route('register.store') }}">
             @csrf
             <fieldset>
+                <label>
+                    Username
+                    <input
+                        name="name"
+                        placeholder="Username"
+                        value="{{ old('name') }}"
+                        @error('name')
+                            aria-invalid="true"
+                            aria-describedby="invalid-name-helper"
+                        @enderror
+                    />
+                    @error('name')
+                        <small id="invalid-name-helper">
+                            {{ $message }}
+                        </small>
+                    @enderror
+                </label>
+
                 <label>
                     Email
                     <input
@@ -46,9 +64,28 @@
                     @enderror
                 </label>
 
+                <label>
+                    Password confirmation
+                    <input
+                        type="password"
+                        name="password_confirmation"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        @error('password_confirmation')
+                            aria-invalid="true"
+                            aria-describedby="invalid-password-confirmation-helper"
+                        @enderror
+                    />
+                    @error('password_confirmation')
+                        <small id="invalid-password-confirmation-helper">
+                            {{ $message }}
+                        </small>
+                    @enderror
+                </label>
+
                 <input
                     type="submit"
-                    value="Login"
+                    value="Register"
                 />
             </fieldset>
         </form>

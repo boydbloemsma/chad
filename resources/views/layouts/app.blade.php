@@ -16,18 +16,39 @@
         <header class="container">
             <nav>
                 <ul>
-                    <li><strong>Acme Corp</strong></li>
+                    <li><strong>Chad</strong></li>
                 </ul>
                 <ul>
                     <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ route('logout.index') }}" class="secondary">Logout</a></li>
+                    <li>
+                        <details class="dropdown">
+                            <summary>
+                                Account
+                            </summary>
+                            <ul dir="rtl">
+                                <li>
+                                    <form action="{{ route('logout.index') }}" method="POST">
+                                        @csrf
+                                        <input type="submit" value="Logout" class="secondary" />
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="{{ route('account.destroy') }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Remove account" />
+                                    </form>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
                 </ul>
             </nav>
         </header>
 
         <main class="container">
             @isset($header)
-                <h1>
+                <h1 id="header">
                     {{ $header }}
                 </h1>
             @endisset

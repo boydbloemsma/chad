@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Authentication\Login;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Authentication\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller

@@ -37,4 +37,12 @@ class Message extends Model
     {
         return Auth::id() === $this->user_id;
     }
+
+    public function sentAt()
+    {
+        if ($this->created_at->isToday()) {
+            return $this->created_at->format('H:i');
+        }
+        return $this->created_at->diffForHumans();
+    }
 }

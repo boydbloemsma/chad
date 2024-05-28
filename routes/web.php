@@ -1,10 +1,18 @@
 <?php
 
+use App\Models\Room;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::prefix('/register')->group(function () {
+    Route::get('/', \App\Http\Controllers\Authentication\Register\IndexController::class)
+        ->name('register');
+    Route::post('/', \App\Http\Controllers\Authentication\Register\StoreController::class)
+        ->name('register.store');
+});
 
 Route::prefix('/login')->group(function () {
     Route::get('/', \App\Http\Controllers\Authentication\Login\IndexController::class)
@@ -13,8 +21,11 @@ Route::prefix('/login')->group(function () {
         ->name('login.store');
 });
 
-Route::get('/logout', \App\Http\Controllers\Authentication\Logout\IndexController::class)
+Route::post('/logout', \App\Http\Controllers\Authentication\Logout\IndexController::class)
     ->name('logout.index');
+
+Route::delete('/account', \App\Http\Controllers\Account\DestroyController::class)
+    ->name('account.destroy');
 
 Route::middleware('auth')
     ->prefix('/rooms')
@@ -29,6 +40,6 @@ Route::middleware('auth')
     });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $rooms = Room::all();
+    return view('dashboard', compact('rooms'));
 })->middleware('auth')->name('dashboard');
-

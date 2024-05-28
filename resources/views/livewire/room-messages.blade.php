@@ -1,12 +1,12 @@
-<article>
+<article id="message-board">
     <div id="messages-overview">
         @forelse($room->messages as $message)
-            <article class="message @if($message->sentByUser()) owned-message @endif" wire:key="{{ $message->id }}">
-                <p>{{ $message->message }}</p>
-                <small data-tooltip="{{ $message->created_at->toDateTimeString() }}" data-placement="bottom">
-                    {{ $message->user->name }} - {{ $message->created_at->diffForHumans() }}
+            <div class="message @if($message->sentByUser()) owned-message @endif" wire:key="{{ $message->id }}">
+                <small>
+                    {{ $message->user->name }} - {{ $message->sentAt() }}
                 </small>
-            </article>
+                <p>{{ $message->message }}</p>
+            </div>
         @empty
             Nothing has been said in this room yet...
         @endforelse
