@@ -17,7 +17,8 @@ class StoreController extends Controller
         User::create($credentials);
 
         if (Auth::attempt($credentials)) {
-            Auth::user()->rooms()->attach(Room::all()->map(fn($room) => $room->id));
+            $room_ids = Room::all('id')->pluck('id')->toArray();
+            Auth::user()->rooms()->attach($room_ids);
 
             $request->session()->regenerate();
 
