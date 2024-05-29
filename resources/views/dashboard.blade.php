@@ -8,6 +8,8 @@
             This is a example project to see what I could create using realtime technologies.
             <br />
             Rooms and messages are purged every 24 hours.
+            <br />
+            Don't use this system for anything serious.
         </p>
     </section>
 
