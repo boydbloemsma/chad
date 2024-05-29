@@ -1,6 +1,6 @@
 <article id="message-board">
     <div id="messages-overview">
-        @forelse($room->messages as $message)
+        @forelse($messages as $message)
             <div class="message @if($message->sentByUser()) owned-message @endif" wire:key="{{ $message->id }}">
                 <small>
                     {{ $message->user->name }} - {{ $message->sentAt() }}
@@ -17,24 +17,28 @@
 
 @script
 <script>
-    const scroll_div = document.querySelector('#messages-overview');
-
     window.onload = function () {
-        scroll_div.scroll({
-            top: scroll_div.scrollHeight,
-            left: 0,
-            behavior: 'instant',
-        });
-    }
+        function scrollOverview() {
+            const scroll_div = document.querySelector('#messages-overview');
 
-    window.Echo.private(`messages.{{ $room->id }}`)
-        .listen('MessageSend', async () => {
-            await $wire.$refresh();
             scroll_div.scroll({
                 top: scroll_div.scrollHeight,
                 left: 0,
-                behavior: 'smooth',
             });
+        }
+
+        scrollOverview();
+
+        $wire.on('message-added', async () => {
+            await new Promise(r => setTimeout(r, 100));
+            scrollOverview();
         });
+
+        window.Echo.private(`messages.{{ $room->id }}`)
+            .listen('MessageSend', async () => {
+                await $wire.loadMessages();
+                scrollOverview();
+            });
+    }
 </script>
 @endscript

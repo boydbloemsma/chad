@@ -8,6 +8,12 @@
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
 
     <title>Chad</title>
+
+    @production
+        <!-- Fathom - beautiful, simple website analytics -->
+        <script src="https://cdn.usefathom.com/script.js" data-site="LWTANQLN" defer></script>
+        <!-- / Fathom -->
+    @endproduction
 </head>
     <body>
         <header class="container">

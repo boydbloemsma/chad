@@ -26,6 +26,8 @@ class SendMessage extends Component
 
         MessageSend::dispatch($message);
 
+        $this->dispatch('message-added');
+
         $this->message = '';
     }
 

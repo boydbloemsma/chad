@@ -29,7 +29,9 @@ class PurgeDatabase extends Command
         ]);
 
         $user = User::find(1);
-        $user->rooms()->attach($room->id);
+
+        $user_ids = User::all('id')->pluck('id')->toArray();
+        $room->users()->attach($user_ids);
 
         Message::create([
             'user_id' => $user->id,

@@ -8,7 +8,6 @@ Has support for private messages as well as rooms.
 ## Tasks
 
 - [ ] tests
-- [ ] add fathom
 
 ## Development
 
