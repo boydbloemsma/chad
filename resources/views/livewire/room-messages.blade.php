@@ -28,7 +28,13 @@
     }
 
     window.Echo.private(`messages.{{ $room->id }}`)
+        .bind('connected', () => {
+            console.log('event received');
+        });
+
+    window.Echo.private(`messages.{{ $room->id }}`)
         .listen('MessageSend', async () => {
+            console.log('event received');
             await $wire.$refresh();
             scroll_div.scroll({
                 top: scroll_div.scrollHeight,
