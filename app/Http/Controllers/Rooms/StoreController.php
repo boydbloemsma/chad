@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Rooms;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Rooms\StoreRequest;
 use App\Models\Room;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 class StoreController extends Controller
@@ -19,8 +19,9 @@ class StoreController extends Controller
             'slug' => Str::slug($validated_request['name']),
         ]);
 
-        Auth::user()->rooms()->attach($room->id);
+        $user_ids = User::all('id')->pluck('id')->toArray();
+        $room->users()->attach($user_ids);
 
-        return redirect(route('rooms.show', $room));
+        return redirect()->route('rooms.show', $room);
     }
 }

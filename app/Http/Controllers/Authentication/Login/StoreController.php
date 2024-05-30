@@ -10,9 +10,10 @@ class StoreController extends Controller
 {
     public function __invoke(LoginRequest $request)
     {
-        $credentials = $request->validated();
+        $credentials = $request->only(['email', 'password']);
+        $remember = $request->has('remember');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             return redirect()->intended('dashboard');

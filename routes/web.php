@@ -42,7 +42,4 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', \App\Http\Controllers\Authentication\Logout\IndexController::class)
         ->name('logout.index');
-
-    Route::delete('/account', \App\Http\Controllers\Account\DestroyController::class)
-        ->name('account.destroy');
 });

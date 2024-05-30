@@ -3,6 +3,8 @@
         Login
     </x-slot:header>
 
+    <x-return-arrow href="{{ route('welcome') }}" />
+
     <article>
         <form method="POST" action="{{ route('login.store') }}">
             @csrf
@@ -44,6 +46,10 @@
                             {{ $message }}
                         </small>
                     @enderror
+                </label>
+                <label>
+                    <input type="checkbox" name="remember" />
+                    Remember me
                 </label>
 
                 <input

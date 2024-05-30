@@ -30,11 +30,10 @@
                             </summary>
                             <ul dir="rtl">
                                 <li>
-                                    <form action="{{ route('account.destroy') }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" value="Remove account" />
-                                    </form>
+                                    {{ request()->user()->name }}
+                                </li>
+                                <li>
+                                    <livewire:remove-account />
                                 </li>
                                 <li>
                                     <form action="{{ route('logout.index') }}" method="POST">

@@ -3,6 +3,8 @@
         Register
     </x-slot:header>
 
+    <x-return-arrow href="{{ route('welcome') }}" />
+
     <article>
         <form method="POST" action="{{ route('register.store') }}">
             @csrf

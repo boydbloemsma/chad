@@ -5,7 +5,7 @@
 
     <section>
         <p>
-            This is a example project to see what I could create using realtime technologies.
+            This is an example project to see what I could create using realtime technologies.
             <br />
             Rooms and messages are purged every 24 hours.
             <br />

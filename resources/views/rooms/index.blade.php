@@ -3,6 +3,8 @@
         Add room
     </x-slot:header>
 
+    <x-return-arrow href="{{ route('dashboard') }}" />
+
     <article>
         <form method="POST" action="/rooms">
             @csrf

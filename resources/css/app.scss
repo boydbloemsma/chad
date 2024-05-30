@@ -3,9 +3,11 @@
     $enable-responsive-spacings: true,
 );
 
-#message-board {
-    margin-top: var(--pico-spacing);
+#return-arrow {
+    padding-bottom: var(--pico-spacing);
+}
 
+#message-board {
     #messages-overview {
         height: 60vh;
         overflow: scroll;
